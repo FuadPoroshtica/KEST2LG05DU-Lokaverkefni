@@ -1,0 +1,22 @@
+//
+// Do any local configuration here
+//
+include "/etc/bind/ddns.key";
+
+zone "atli.local" {
+	type master;
+	file "/etc/bind/zones/db.atli.local";
+	allow-update { key DDNS_UPDATE; };
+};
+
+zone "100.168.192.in-addr.arpa" {
+	type master;
+	file "/etc/bind/zones/db.100.168.192";
+	allow-update { key DDNS_UPDATE; };
+};
+
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+

@@ -1,0 +1,16 @@
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	server1.atli.local. admin.atli.local. (
+			      3		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+; name servers - NS records
+	IN	NS	server1.atli.local.
+
+; PTR Records
+100.168.192	IN	PTR	server1.atli.local.	; 192.168.100.1

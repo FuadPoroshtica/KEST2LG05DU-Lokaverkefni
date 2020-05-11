@@ -1,0 +1,90 @@
+journalctl -u isc-dhcp-server.service
+http://forums.debian.net/viewtopic.php?t=119282
+ip link set dev ens33 up
+/var/lib/dhcp/dhcpd.leases
+
+
+DHCP configuration files:
+/etc/dhcp/dhcpd.conf
+/etc/default/isc-dhcp-server
+
+DNS Commands
+sudo apt install bind9 bind9utils bind9-doc
+sudo systemctl restart bind9
+
+DNS configuration files:
+/etc/bind/named.conf.local
+/etc/bind/named.conf.options
+/etc/bind/zones/db.atli.local
+/etc/bind/zones/db.100.168.192
+/etc/dhcp/dhcpd.conf
+/etc/default/bind9
+/etc/network/interfaces
+/etc/resolv.conf
+
+
+add users and groups commands:
+adduser
+groupadd 
+
+samba share commands:
+testparm
+systemctl restart smbd
+chgrp sameign sameign
+chmod g+rwx
+chmod 774
+
+
+samba share config files:
+/etc/samba/smb.conf
+
+ssh protocol commands:
+apt-get install openssh-server
+apt-get install openssh-client
+systemctl status ssh
+
+ssh protocol config files:
+/etc/ssh/sshd_config
+
+apache2 ssl certificate commands
+apt-get install apache2
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+
+apache2 ssl certificate config files:
+/etc/apache2/conf-available/ssl-params.conf
+/etc/apache2/sites-available/default-ssl.conf
+/etc/apache2/sites-available/000-default.conf
+
+
+MySQL and PhpMyAdmin commands:
+apt install apache2 php php-json php-mbstring php-zip php-gd php-xml php-curl php-mysql
+wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.zip
+unzip phpMyAdmin-4.9.0.1-all-languages.zip -d /opt
+mv -v /opt/phpMyAdmin-4.9.0.1-all-languages /opt/phpMyAdmin
+chown -Rfv www-data:www-data /opt/phpMyAdmin
+
+
+
+MySQL and PhpMyAdmin config files:
+/etc/apache2/sites-available/phpmyadmin.conf
+/etc/apache2/ports.conf
+
+PurFTPd commands:
+apt install pure-ftpd
+echo "yes" > /etc/pure-ftpd/conf/Daemonize
+echo "yes" > /etc/pure-ftpd/conf/NoAnonymous
+echo "yes" > /etc/pure-ftpd/conf/ChrootEveryone
+echo "yes" > /etc/pure-ftpd/conf/IPV4Only
+systemctl restart pure-ftpd
+apt install gftp # til að prófa ftp
+
+Quota commands:
+apt install quota
+quotacheck -ugm / # Creates files /aquota.user and /aquota.group (contain info about the limits)
+quotaon -v / # turn on the quota system
+
+
+
+Quota config files:
+/etc/fstab
+

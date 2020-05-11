@@ -1,0 +1,21 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto ens33
+iface ens33 inet dhcp
+
+# The primarty network interface
+allow-hotplug ens37
+iface ens37 inet static
+	address 192.168.100.1/26
+#	netmask 255.255.255.192
+	gateway 192.168.100.1
+	
+dns-nameservers 192.168.100.1 8.8.8.8
+dns-search atli.local
